@@ -1,0 +1,24 @@
+{
+  "interactions": [
+    {
+      "source": "TGFB1",
+      "target": "IL1B",
+      "interaction_score": 0.000786
+    },
+    {
+      "source": "TGFB1",
+      "target": "IL6",
+      "interaction_score": 0.00099
+    },
+    {
+      "source": "IL1B",
+      "target": "PIK3CA",
+      "interaction_score": 0.000919
+    },
+    {
+      "source": "IL1B",
+      "target": "IL6",
+      "interaction_score": 0.000997
+    }
+  ]
+}
