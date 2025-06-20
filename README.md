@@ -1,201 +1,52 @@
-# 智能体-蛋白质分析系统 1
+# TCM-Agent: Advancing Network Pharmacology and Herbal Medicine Discovery with LLM-Based Multi-Agent Systems
 
-这是一个基于大语言模型的中医药智能体分析系统，加速中医药系统药理学分析和药物发现。。该系统集成了多个数据源和分析工具，可以进行化合物信息查询、靶点分析、分子相似度计算、富集分析等功能。
+A Traditional Chinese Medicine (TCM) agent analysis system based on large language models, accelerating TCM systems pharmacology analysis and drug discovery. This system integrates multiple data sources and analytical tools, enabling compound information query, target analysis, molecular similarity calculation, enrichment analysis, and more.
 
-## 主要功能
+## Key Features
 
-1.  **化合物信息查询**: 通过PubChem API获取化合物的详细信息，支持化学结构、分子式等基本信息查询。
-2.  **靶点分析**: 基于TTD数据库的药物-靶点关系分析，蛋白质相互作用网络分析。
-3.  **分子相似度计算**: 支持多种分子指纹类型（Morgan、MACCS、Topological、Atom Pairs）和相似度计算方法（Tanimoto、Dice、Cosine等）。
-4.  **药物-靶点活性分析**: 分析药物与靶点的结合活性，提供详细的活性数据。
-5.  **靶点富集分析**: 支持多种富集分析数据库，提供富集分析结果文件下载功能，生成详细的富集分析报告，并自动生成可视化图表。
-6.  **中药-靶点知识图谱**: 当对话内容涉及中药靶点信息时，自动加载并展示中药与靶点关系的知识图谱。
+1.  **Compound Information Query**: Retrieve detailed compound information through PubChem API, supporting chemical structures, molecular formulas, and other basic information queries.
+2.  **Target Analysis**: Drug-target relationship analysis based on TTD database, protein-protein interaction network analysis.
+3.  **Molecular Similarity Calculation**: Supports multiple molecular fingerprint types (Morgan, MACCS, Topological, Atom Pairs) and similarity calculation methods (Tanimoto, Dice, Cosine, etc.).
+4.  **Drug-Target Activity Analysis**: Analyze drug-target binding activity with detailed activity data.
+5.  **Target Enrichment Analysis**: Supports multiple enrichment analysis databases, provides downloadable enrichment analysis result files, generates detailed reports, and automatically creates visual charts.
+6.  **TCM-Target Knowledge Graph**: Automatically loads and displays knowledge graphs of TCM-target relationships when conversation involves TCM target information.
 
-## UI设计特点
+## UI Design Features
 
-系统采用现代化的设计风格，具有以下特点：
+The system adopts a modern design style with the following characteristics:
 
-1.  **视觉设计**: 紫蓝色渐变主题，毛玻璃效果背景，精致的阴影和发光效果，自适应布局。
-2.  **交互体验**: 平滑的动画过渡，悬浮反馈和状态提示，直观的对话界面，实时打字指示器。
-3.  **导航系统**: 
-    *   **首页**: 顶部导航栏，包含Logo和主要页面链接
-    *   **Agent页面**: 左侧边栏导航，64px宽度，固定定位，包含Logo、导航图标和版本信息
-    *   **响应式设计**: 根据页面类型自动切换导航模式，保持最佳用户体验
-4.  **核心页面**: 大气的首页，专业的Agent对话页（支持Markdown渲染），全屏布局优化。
-5.  **数据可视化**: 
-    *   **Agent页面**: 聊天界面右侧面板可以**同时展示富集分析结果图片和中药靶点知识图谱**。当两种可视化都触发时，它们会**垂直排列**显示，互不干扰。
-    *   **自适应布局**: 页面支持垂直滚动，当知识图谱和图片同时显示时，页面会自动扩展高度，用户可以通过滚动查看完整内容。知识图谱高度为450px，图片面板高度为600px，确保图表内容清晰可见。
-    *   **图片全屏查看**: 富集分析图支持点击放大至全屏，并提供了专用的放大按钮，方便用户查看图表中的详细数据和标签。
-    *   **文件下载**: 支持 `.xlsx`, `.csv`, `.pdf`, `.json`, `.zip` 等多种格式的文件下载。
-6.  **用户交互控制**:
-    *   **输入区域控制栏**: 模型选择器、清空聊天记录按钮、回到底部按钮集中在输入框上方，操作便捷。
-    *   **响应式布局**: 右侧面板出现时聊天区域自动调整宽度，保持最佳阅读体验。
-    *   **状态提示**: 清晰的视觉反馈，按钮hover效果和状态变化。
+1.  **Visual Design**: Purple-blue gradient theme, frosted glass background, refined shadows and glow effects, responsive layout.
+2.  **Interaction Experience**: Smooth animated transitions, hover feedback and status indicators, intuitive chat interface, real-time typing indicators.
+3.  **Navigation System**: 
+    *   **Homepage**: Top navigation bar with logo and main page links
+    *   **Agent Page**: Left sidebar navigation, 64px width, fixed positioning, containing logo, navigation icons and version information
+    *   **Responsive Design**: Automatically switches navigation modes based on page type for optimal user experience
+4.  **Core Pages**: Visually striking homepage, professional Agent chat page (supports Markdown rendering), full-screen layout optimization.
+5.  **Data Visualization**: 
+    *   **Agent Page**: Right-side panel simultaneously displays **enrichment analysis result images and TCM-target knowledge graphs**. When both visualizations are triggered, they display in **vertical arrangement** without interference.
+    *   **Responsive Layout**: Page supports vertical scrolling. When both knowledge graphs and images are displayed, page height automatically expands. Users can scroll to view full content. Knowledge graph height is 450px, image panel height is 600px, ensuring clear chart visibility.
+    *   **Full-Screen Image View**: Enrichment analysis charts support click-to-zoom full-screen viewing with dedicated zoom buttons.
+    *   **File Downloads**: Supports multiple file formats (`.xlsx`, `.csv`, `.pdf`, `.json`, `.zip`).
+6.  **User Interaction Controls**:
+    *   **Input Area Control Bar**: Model selector, clear chat history button, scroll-to-bottom button concentrated above input box.
+    *   **Responsive Layout**: Chat area automatically adjusts width when right panel appears.
+    *   **Status Indicators**: Clear visual feedback with button hover effects and state changes.
 
-## 系统架构
+## System Architecture
 
--   **前端**: React (TypeScript) + Material UI
--   **后端**: Python Flask + Socket.IO
--   **通信**: WebSocket + RESTful API
--   **模型**: 支持多个大语言模型（如 Deepseek, Doubao）
+-   **Frontend**: React (TypeScript) + Material UI
+-   **Backend**: Python Flask + Socket.IO
+-   **Communication**: WebSocket + RESTful API
+-   **Models**: Supports multiple LLMs (e.g., Deepseek, Doubao)
 
-## API接口
+## API Interfaces
 
-### WebSocket接口
-- `ask_question`: 发送问题，接收流式回答
-- `question_answer`: 接收AI回答片段
-- `stream_end`: 标识回答结束
+### WebSocket Interfaces
+- `ask_question`: Submit questions, receive streaming answers
+- `question_answer`: Receive AI answer fragments
+- `stream_end`: Marks answer completion
 
-### RESTful API接口
-- `POST /api/reset_conversation`: 重置对话记录，清空前后端聊天历史
+### RESTful API Interfaces
+- `POST /api/reset_conversation`: Reset conversation history (clears chat history on frontend and backend)
 
-## 项目结构
-
-```
-PharmAgent_web/
-├── app.py              # 后端主应用入口 (Flask)
-├── agent.py            # 智能体核心逻辑
-├── tools_configs.py    # 工具配置
-├── agents/             # 不同类型智能体的实现
-├── tools/              # 工具函数 (LLM API, 数据处理等)
-├── prompts/            # 存储提示词
-├── data/               # 存储数据文件 (如知识图谱数据)
-├── files/              # 存储生成的图片和文件
-├── client/             # React前端
-│   ├── public/         # 静态资源 (包括图片和数据)
-│   ├── src/
-│   │   ├── components/ # 可复用UI组件 (ImageViewer, KnowledgeGraphViewer, FileDownloader等)
-│   │   ├── pages/      # 页面组件 (Agent.tsx, Home.tsx)
-│   │   ├── theme/      # Material UI主题配置
-│   │   ├── App.tsx     # 应用主组件
-│   │   └── index.tsx   # 应用入口
-│   ├── package.json
-│   └── tsconfig.json
-└── requirements.txt    # 后端Python依赖
-```
-
-## 安装说明
-
-### 后端
-
-1.  **环境**: Python 3.10+, Conda (可选)
-2.  **安装**: `pip install -r requirements.txt`
-3.  **配置**: 在 `tools/llm_api.py` (或相关配置文件) 中配置大语言模型API密钥。
-
-### 前端
-
-1.  **环境**: Node.js 16+, npm 7+ 或 yarn
-2.  **安装**: `cd client && npm install` (或 `yarn install`)
-
-## 使用方法
-
-1.  **启动后端**: `flask run --host=0.0.0.0 --port=3000` (在项目根目录运行)
-2.  **启动前端**: `cd client && npm start` (或 `yarn start`)
-3.  **访问**: 浏览器打开 `http://localhost:5001` (前端应用会在5001端口启动)
-
-## 常见问题解决
-
-### npm start 启动问题
-
-如果遇到 `npm start` 权限错误或者命令不兼容问题，请按照以下步骤解决：
-
-1. **权限问题**: 
-   ```bash
-   cd client
-   chmod +x node_modules/.bin/react-scripts
-   ```
-
-2. **环境兼容性问题**:
-   - 在Mac/Linux环境下，package.json中的start脚本应使用 `PORT=5001 react-scripts start`
-   - 在Windows环境下，应使用 `set PORT=5001 && react-scripts start`
-
-3. **完全重新安装依赖**:
-   ```bash
-   cd client
-   rm -rf node_modules package-lock.json
-   npm install
-   npm start
-   ```
-
-## 前端功能亮点
-
-1.  **首页**: 动态背景，浮动图标，渐变文字，脉动按钮。
-2.  **Agent页面**:
-    *   实时流式响应与打字指示器。
-    *   支持切换不同的大语言模型。
-    *   Markdown消息渲染 (包括代码块、链接等)。
-    *   用户和AI头像区分。
-    *   消息入场动画 (Zoom)。
-    *   **智能滚动控制**:
-        *   流式输出时自动跟随到底部
-        *   用户手动滚动时暂停自动滚动
-        *   "回到底部"按钮方便快速定位
-    *   **聊天记录管理**:
-        *   "清空聊天记录"按钮一键清除对话历史
-        *   同时重置前端显示和后端conversation状态
-        *   localStorage自动持久化聊天记录
-    *   **右侧动态面板**: 根据AI回复内容，自动显示：
-        *   **图片查看器**: 用于展示富集分析等结果图片，支持多图片切换。
-        *   **知识图谱查看器**: 用于展示中药-靶点关系图谱。
-        *   **垂直堆叠**: 当图片和图谱同时需要展示时，两者会上下排列显示。
-        *   **自适应高度**: 页面支持垂直滚动，确保用户可以完整查看所有内容，不会因为高度限制而压缩显示效果。
-    *   集成文件下载组件，方便下载分析报告。
-
-## 注意事项
-
--   确保环境和API密钥配置正确。
--   确保后端服务和前端开发服务器都已启动。
--   知识图谱数据 (`network_plot.json`) 需放置在 `client/public/data/` 目录下。  
--   富集分析生成的图片需由后端放置在Web服务器可访问的路径下 (当前配置为项目根目录下的 `files/` 目录)。
-
-## 技术支持
-
-如有问题，请提交Issue或联系技术支持。
-
-## 文件下载功能
-
-系统提供了文件下载功能，特别是在富集分析等生成数据文件的场景中：
-
-1. 实现方式
-   - 后端：使用Flask的send_file函数，设置as_attachment=True强制下载
-   - 前端：专用FileDownloader组件处理文件下载，确保跨浏览器兼容性
-   - 支持多种文件格式：xlsx, csv, pdf, json, zip等
-
-2. 使用方法
-   - 在对话中，文件下载链接会以醒目的Markdown链接形式呈现
-   - 点击下载按钮即可获取文件，无需离开当前页面
-   - 文件会保存在用户的默认下载目录
-
-3. 文件管理
-   - 系统生成的文件存储在服务器的files目录
-   - 文件名包含时间戳，确保唯一性
-   - 管理员应定期清理files目录，避免占用过多存储空间
-   
-4. 常见问题与解决方案
-   - **无法从网站上提取文件**：这通常是浏览器安全策略导致的问题，我们使用了XHR请求和适当的MIME类型来解决
-   - **下载文件名乱码**：已设置正确的Content-Disposition头，确保文件名在各种浏览器中正确显示
-   - **下载速度慢**：支持断点续传，大文件可以分段下载
-   - **不兼容某些浏览器**：使用了兼容性更好的XMLHttpRequest下载方法，支持主流浏览器
-   - **点击链接没反应**：实现了错误提示机制，下载失败会显示具体原因
-
-## 富集分析可视化功能
-
-系统提供了富集分析结果的可视化功能，使用户能够直观地理解分析结果：
-
-1. 功能特点
-   - 自动识别富集分析结果并生成图表
-   - 图表在聊天窗口右侧实时展示
-   - 支持多个数据库富集结果的切换查看
-   - 图表展示P值显著性，直观反映富集程度
-   
-
-2. 使用方法
-   - 进行含有富集分析的查询时，系统自动生成图表
-   - 用户可以通过顶部的数据库标签切换不同的图表
-   - 图表面板可以通过右上角的关闭按钮隐藏
-   - 数据分析完成后，可随时查看Excel表格详细结果
-
-3. 技术实现
-   - 前端使用React组件化设计，实现高度可复用的图表展示
-   - 后端使用Matplotlib和Seaborn生成精美图表
-   - 图表以PNG格式保存，支持高分辨率输出 
+## Project Structure
