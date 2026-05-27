@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Node / frontend
+node_modules/
+client/node_modules/
+client/build/
+client/dist/
+
+# Flask / runtime
+instance/
+*.log
+*.pid
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Generated files
+files/
+data/*.tmp
+*.tmp
